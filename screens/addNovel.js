@@ -19,7 +19,7 @@ export default function AddNovel() {
     const id = (n.length == 0) ? 0 : (n[n.length-1].id +1);
     n.push({"id":id, "title": title, "author": author, "type":  type, "url": url});
     await AsyncStorage.setItem("NOVELS", JSON.stringify(n)).then(()=>{
-      setAuthor("");setTitle("");setURL("");
+      setAuthor("");setTitle("");setURL("");setType("");
     })
   };
 
@@ -57,6 +57,8 @@ export default function AddNovel() {
         <Picker.Item label="Action" value="Action" />
         <Picker.Item label="War" value="War" />
         <Picker.Item label="Realistic" value="Realistic" />
+        <Picker.Item label="Sports" value="Sports" />
+        <Picker.Item label="History" value="History" />
       </Picker>
 
       <View style={styles.editData}>
@@ -99,19 +101,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 15,
-    backgroundColor: '#ffffff',
+    justifyContent:'center',
+    backgroundColor: '#f2f2f2',
   },
   input: {
     width: 300,
     height: 44,
     padding: 10,
     margin: 10,
-    backgroundColor: '#e8e8e8',
+    backgroundColor: 'white',
+    borderWidth: 1,
   },
   picker: {
     width: 230,
-    backgroundColor: '#e8e8e8',
+    backgroundColor: 'white',
     borderColor: 'black',
     borderWidth: 1,
     padding: 10,

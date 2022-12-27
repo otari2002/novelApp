@@ -1,9 +1,9 @@
 import { NavigationContainer  } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons';
-
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import HomeScreen from "./screens/homescreen";
 import AddNovel from "./screens/addNovel";
+import { View, Alert } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +20,16 @@ export default function App() {
           options={{
             tabBarLabel: '', 
             tabBarIcon: () => <AntDesign name="home" size={24} color="black" />,
+            headerRight: () => (
+              <View style={{marginHorizontal: 15}}>
+                <Ionicons 
+                  name="help-circle-outline" 
+                  size={28} 
+                  color="black"
+                  onPress={() => Alert.alert("Modification","Appuyez sur le titre d'un roman pendant une seconde pour modifier ses détails.",[])}
+                />
+              </View>
+            )
           }}
         />
         <Tab.Screen
